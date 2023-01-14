@@ -1,0 +1,27 @@
+.garage {
+  margin: 2% 0;
+  border: 1px solid red;
+  width: 350px;
+
+  .controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    
+    &-line {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      
+      .controls__input {
+        flex: 0 0 190px;
+      }
+    }
+
+    .controls__generate {
+      width: 180px;
+    }
+  }
+}

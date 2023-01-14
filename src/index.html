@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async Race</title>
+  </head>
+  <body id="root">
+    <div class="wrapper">
+      <button class="to-garage button">TO GARAGE</button>
+      <button class="to-winners button">TO WINNERS</button>
+      <div class="wrapper__garage garage">
+        <div class="garage__controls controls">
+          <div class="controls-line">
+            <input type="text" class="controls__input" id="set-car-name" />
+            <input type="color" class="controls__color" id="set-car-color" value="#FFFFFF" />
+            <button class="controls__create button" id="create-car">CREATE</button>
+          </div>
+          <div class="controls-line">
+            <input type="text" class="controls__input" id="update-car-name" disabled />
+            <input type="color" class="controls__color" id="update-car-color" value="#FFFFFF" disabled />
+            <button class="controls__update button" id="update-car" disabled>UPDATE</button>
+          </div>
+          <div class="controls-line">
+            <button class="controls__race button" id="race">RACE</button>
+            <button class="controls__reset button" id="reset" disabled>RESET</button>
+            <button class="controls__generate button" id="generate">GENERATE CARS</button>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper__winners hide"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+#root {
+  background-color: $background-color;
+}
+
+.wrapper {
+  width: 98%;
+  margin: 1% auto;
+}
+
+.hide {
+  display: none;
+}
+
+.button {
+  @extend %button-main;
+}

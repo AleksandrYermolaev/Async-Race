@@ -1,0 +1,68 @@
+$background-color: #000000;
+$button-main-color: #e5f9ba;
+$button-main-shadow-color: #93c94e;
+$button-secondary-color: #e3eaf6;
+$button-secondary-shadow-color: #3c75cc;
+$button-disabled-color: #818b9b;
+$button-main-shadow-disabled-color: #6b7c55;
+$button-secondary-shadow-disabled-color: #577097;
+$stop-color: #c0291e;
+$text-color: #bdae41;
+
+%button-main {
+  min-width: 95px;
+  padding: 2px 5px;
+  background-color: $button-main-color;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 2px $button-main-shadow-color;
+  cursor: pointer;
+
+  &:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 2px $button-main-shadow-color;
+  }
+
+  &:disabled {
+    background-color: $button-disabled-color;
+    box-shadow: 0 5px 2px $button-main-shadow-disabled-color;
+    cursor: auto;
+
+    &:active {
+      transform: none;
+      box-shadow: 0 5px 2px $button-main-shadow-disabled-color; 
+    }
+  }
+}
+
+%button-secondary {
+  min-width: 95px;
+  padding: 2px 5px;
+  background-color: $button-secondary-color;
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 2px $button-secondary-shadow-color;
+  cursor: pointer;
+
+  &:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 2px $button-secondary-shadow-color;
+  }
+
+  &:disabled {
+    background-color: $button-disabled-color;
+    box-shadow: 0 5px 2px $button-secondary-shadow-disabled-color;
+    cursor: auto;
+
+    &:active {
+      transform: none;
+      box-shadow: 0 5px 2px $button-secondary-shadow-disabled-color; 
+    }
+  }
+}
