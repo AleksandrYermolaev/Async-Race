@@ -1,21 +1,24 @@
 $background-color: #000000;
 $button-main-color: #e5f9ba;
 $button-main-shadow-color: #93c94e;
-$button-secondary-color: #e3eaf6;
+$button-secondary-color: #c4d7f7;
 $button-secondary-shadow-color: #3c75cc;
 $button-disabled-color: #818b9b;
 $button-main-shadow-disabled-color: #6b7c55;
 $button-secondary-shadow-disabled-color: #577097;
 $stop-color: #c0291e;
+$action-color: #0da30d;
 $text-color: #bdae41;
+$table-head-color: #205ab1;
+$table-row-color: #2e3336;
 
 %button-main {
   min-width: 95px;
   padding: 2px 5px;
   background-color: $button-main-color;
-  font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 14px;
+  font-weight: bold;
   border: none;
   border-radius: 5px;
   box-shadow: 0 5px 2px $button-main-shadow-color;
@@ -33,7 +36,7 @@ $text-color: #bdae41;
 
     &:active {
       transform: none;
-      box-shadow: 0 5px 2px $button-main-shadow-disabled-color; 
+      box-shadow: 0 5px 2px $button-main-shadow-disabled-color;
     }
   }
 }
@@ -62,7 +65,21 @@ $text-color: #bdae41;
 
     &:active {
       transform: none;
-      box-shadow: 0 5px 2px $button-secondary-shadow-disabled-color; 
+      box-shadow: 0 5px 2px $button-secondary-shadow-disabled-color;
     }
+  }
+}
+
+%button-start-stop {
+  padding: 5px 8px;
+  background-color: transparent;
+  border: 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
+  
+  &:disabled {
+    color: $button-disabled-color;
+    border-color: $button-disabled-color;
+    cursor: auto;
   }
 }

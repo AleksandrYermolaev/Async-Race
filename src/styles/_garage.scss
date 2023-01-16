@@ -1,27 +1,86 @@
 .garage {
-  margin: 2% 0;
-  border: 1px solid red;
-  width: 350px;
+  margin: 3% 0 5% 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
 
   .controls {
-    width: 100%;
+    width: 350px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
-    
+    margin-bottom: 3%;
+
     &-line {
       display: flex;
       gap: 5px;
       align-items: center;
-      
+
       .controls__input {
         flex: 0 0 190px;
       }
     }
-
+    .controls__create,
+    .controls__update {
+      @extend %button-secondary;
+    }
     .controls__generate {
-      width: 180px;
+      width: 154px;
+      @extend %button-secondary;
+    }
+  }
+
+  .header,
+  .page-num {
+    color: #FFFFFF;
+  }
+
+  .car-track {
+    margin-bottom: 25px;
+    &__name {
+      padding-left: 10px;
+      color: $text-color;
+    }
+
+    &__button {
+      @extend %button-secondary;
+    }
+
+    .field {
+      display: flex;
+      gap: 5px;
+      align-items: start;
+      margin-top: 15px;
+      height: 50px;
+      border-bottom: 2px dashed #FFFFFF;
+
+      &__accelerate {
+        @extend %button-start-stop;
+        color: $action-color;
+        border-color: $action-color;
+      }
+
+      &__brake {
+        @extend %button-start-stop;
+        color: $stop-color;
+        border-color: $stop-color;
+      }
+
+      &__car {
+        align-self: end;
+        position: relative;
+        top: 7px;
+        width: 100px;
+        height: 50px;
+      }
+      &__finish {
+        align-self: end;
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        right: 150px;
+      }
     }
   }
 }
