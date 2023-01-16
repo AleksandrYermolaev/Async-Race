@@ -25,6 +25,17 @@ export const createCar = async (carProps: Omit<Car, 'id'>): Promise<Car> => {
   return response.json();
 };
 
+export const updateCar = async (carProps: Car): Promise<Car> => {
+  const response = await fetch(`${GARAGE_ENDPOINT}/${carProps.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name: carProps.name, color: carProps.color }),
+  });
+  return response.json();
+};
+
 export const getWinners = async (
   page: number,
   limit = 10,

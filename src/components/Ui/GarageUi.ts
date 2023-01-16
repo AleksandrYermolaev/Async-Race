@@ -32,7 +32,7 @@ const createControlsBlock = () => {
     <div class="controls-line">
       <input type="text" class="controls__input" id="update-car-name" disabled />
       <input type="color" class="controls__color" id="update-car-color" value="#FFFFFF" disabled />
-      <button class="controls__update button" id="update-car" disabled>UPDATE</button>
+      <button class="controls__update button" id="update-car" data-car="0" disabled>UPDATE</button>
     </div>
     <div class="controls-line">
       <button class="controls__race button" id="race">RACE</button>
@@ -42,30 +42,30 @@ const createControlsBlock = () => {
   </div>`;
 };
 
-const createTrack = (carColor: string, carName: string) => {
+const createTrack = (carProps: Car) => {
   return `
-  <div class="car-track">
-    <button class="car-track__button button">SELECT</button>
-    <button class="car-track__button button">REMOVE</button>
-    <span class="car-track__name" id="car-name">${carName}</span>
+  <div class="car-track" id="${carProps.id}">
+    <button class="car-track__button button" id="select">SELECT</button>
+    <button class="car-track__button button" id="remove">REMOVE</button>
+    <span class="car-track__name" id="car-name">${carProps.name}</span>
     <div class="car-track__field field">
       <button class="field__accelerate" id="accelerate">A</button>
       <button class="field__brake" id="brake" disabled>B</button>
-      ${createCar(carColor, GARAGE_CAR_HTML_CLASS, GARAGE_CAR_HTML_ID)}
+      ${createCar(carProps.color, GARAGE_CAR_HTML_CLASS, GARAGE_CAR_HTML_ID)}
       ${createFlag()}
     </div>
   </div>`;
 };
 
-const renderTracks = (cars: Array<Car>) => {
+export const renderTracks = (cars: Array<Car>) => {
   let result = '';
   cars.forEach((car) => {
-    result += createTrack(car.color, car.name);
+    result += createTrack(car);
   });
   return result;
 };
 
-export const renderGaragePage = (garage: GetCarsResponse, page = '1') => {
+export const renderGaragePage = (garage: GetCarsResponse, page = 1) => {
   return `
   <div class="wrapper__garage garage">
     ${createControlsBlock()}
