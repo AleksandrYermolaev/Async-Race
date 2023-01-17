@@ -1,5 +1,6 @@
 import {
   listenCreateCar,
+  listenGenerateCars,
   listenPageChange,
   listenPagination,
   listenUpdateCar,
@@ -18,6 +19,7 @@ const app = async () => {
   setListenersToCars();
   updateButtonStates();
   listenPagination();
+  listenGenerateCars();
 };
 
 app();

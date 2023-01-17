@@ -2,6 +2,7 @@ import { GARAGE_ENDPOINT, WINNERS_ENDPOINT } from 'utils/constants';
 import { Car, GetCarsResponse, GetWinnersResponse, SortByParam, SortOrder } from 'utils/types';
 
 export const getCars = async (page: number, limit = 7): Promise<GetCarsResponse> => {
+  console.log(`${GARAGE_ENDPOINT}?_page=${page}&_limit=${limit}`);
   const response = await fetch(`${GARAGE_ENDPOINT}?_page=${page}&_limit=${limit}`);
   return {
     cars: await response.json(),

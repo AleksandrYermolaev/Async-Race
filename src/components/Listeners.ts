@@ -1,3 +1,4 @@
+import { generateRandomCars } from 'utils/generateRandomCars';
 import { getButtonElement } from 'utils/getButtonElement';
 import { getCurrentPage } from 'utils/getCurrentPage';
 import { getCurrentWinnersPage } from 'utils/getCurrentWiinersPage';
@@ -30,11 +31,10 @@ export const listenCreateCar = () => {
   const inputName = getInputElement(document, '#set-car-name');
   const inputColor = getInputElement(document, '#set-car-color');
   const createButton = getButtonElement(document, '#create-car');
-  const currentPage = getCurrentPage();
   createButton.addEventListener('click', async () => {
     if (inputName.value) {
       await createCar({ name: inputName.value, color: inputColor.value });
-      await updateGarage(currentPage);
+      await updateGarage(getCurrentPage());
       inputName.value = '';
       inputColor.value = '#FFFFFF';
     }
@@ -45,7 +45,6 @@ export const listenUpdateCar = () => {
   const inputName = getInputElement(document, '#update-car-name');
   const inputColor = getInputElement(document, '#update-car-color');
   const updateCarButton = getButtonElement(document, '#update-car');
-  const currentPage = getCurrentPage();
   updateCarButton.addEventListener('click', async function updateByClick() {
     if (inputName.value) {
       const carId = Number(updateCarButton.dataset.car);
@@ -54,7 +53,7 @@ export const listenUpdateCar = () => {
         color: inputColor.value,
         id: carId,
       });
-      await updateGarage(currentPage);
+      await updateGarage(getCurrentPage());
       inputName.disabled = true;
       inputName.value = '';
       inputColor.disabled = true;
@@ -86,10 +85,9 @@ const listenSelectCar = (
 const listenRemoveCar = (track: Element): void => {
   const removeBtn = getButtonElement(track, '#remove');
   const carId = Number(track.id);
-  const currentPage = getCurrentPage();
   removeBtn.addEventListener('click', async () => {
     await deleteCar(carId);
-    await updateGarage(currentPage);
+    await updateGarage(getCurrentPage());
   });
 };
 
@@ -130,5 +128,15 @@ export const listenPagination = () => {
   });
   prevPageBtn.addEventListener('click', async () => {
     await paginate(garagePage, winnersPage, -1);
+  });
+};
+
+export const listenGenerateCars = () => {
+  const generateBtn = getButtonElement(document, '#generate');
+  generateBtn.addEventListener('click', async () => {
+    const generatedCars = generateRandomCars();
+    const createCarPromises = generatedCars.map((generatedCar) => createCar(generatedCar));
+    await Promise.all(createCarPromises);
+    updateGarage(getCurrentPage());
   });
 };
