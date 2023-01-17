@@ -3,6 +3,7 @@ import { setListenersToCars } from 'components/Listeners';
 import { renderTracks } from 'components/Ui/GarageUi';
 import { getDivElement } from './getDivElement';
 import { getSpanElement } from './getSpanElement';
+import { updateButtonStates } from './updateButtonStates';
 
 export const updateGarage = async (page = 1): Promise<void> => {
   const garageProps = await getCars(page);
@@ -17,4 +18,5 @@ export const updateGarage = async (page = 1): Promise<void> => {
   carsAmountElem.innerHTML = '';
   carsAmountElem.textContent = garageProps.amount;
   setListenersToCars();
+  updateButtonStates();
 };

@@ -36,6 +36,10 @@ export const updateCar = async (carProps: Car): Promise<Car> => {
   return response.json();
 };
 
+export const deleteCar = async (id: number): Promise<void> => {
+  await fetch(`${GARAGE_ENDPOINT}/${id}`, { method: 'DELETE' });
+};
+
 export const getWinners = async (
   page: number,
   limit = 10,

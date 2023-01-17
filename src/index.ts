@@ -1,5 +1,12 @@
-import { listenCreateCar, listenPageChange, listenUpdateCar, setListenersToCars } from 'components/Listeners';
+import {
+  listenCreateCar,
+  listenPageChange,
+  listenPagination,
+  listenUpdateCar,
+  setListenersToCars,
+} from 'components/Listeners';
 import { renderPage } from 'components/Ui/MainUi';
+import { updateButtonStates } from 'utils/updateButtonStates';
 import './index.scss';
 
 const app = async () => {
@@ -9,6 +16,8 @@ const app = async () => {
   listenCreateCar();
   listenUpdateCar();
   setListenersToCars();
+  updateButtonStates();
+  listenPagination();
 };
 
 app();

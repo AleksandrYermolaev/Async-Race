@@ -13,7 +13,7 @@ export const renderPage = async () => {
     <button class="to-winners button" id="to-winners">TO WINNERS</button>
     ${garageHTML}
     ${winnerHTML}
-    <button class="wrapper__prev button" id="prev-page">PREV</button>
-    <button class="wrapper__next button" id="next-page">NEXT</button>
+    <button class="wrapper__prev button" id="prev-page" disabled>PREV</button>
+    <button class="wrapper__next button" id="next-page" disabled>NEXT</button>
   </div>`;
 };

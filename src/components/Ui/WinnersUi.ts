@@ -16,7 +16,7 @@ const createWinner = (winner: Winner, car: Car) => {
   </tr>`;
 };
 
-const renderWinners = async (winners: Array<Winner>) => {
+export const renderWinners = async (winners: Array<Winner>) => {
   let result = '';
   for (const winner of winners) {
     const car = await getCar(winner.id);
@@ -41,7 +41,7 @@ export const renderWinnersPage = async (winnersProps: GetWinnersResponse, page =
           <td>Best time (sec)</td>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="table-body">
       ${winnersTable}
       </tbody>
     </table>
