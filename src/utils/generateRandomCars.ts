@@ -34,9 +34,9 @@ const generateRandomCarColor = (): string => {
   return `#${randomRed.padStart(2, '0')}${randomGreen.padStart(2, '0')}${randomBlue.padStart(2, '0')}`;
 };
 
-export const generateRandomCars = (amount: number = 100): Omit<Car, 'id'>[] => {
+export const generateRandomCars = (amount = 100): Omit<Car, 'id'>[] => {
   const result = [];
-  for (let i = 0; i < 100; i += 1) {
+  for (let i = 0; i < amount; i += 1) {
     result.push({
       name: generateRandomCarName(),
       color: generateRandomCarColor(),

@@ -1,3 +1,4 @@
+import { animateCar } from 'utils/animateCar';
 import { generateRandomCars } from 'utils/generateRandomCars';
 import { getButtonElement } from 'utils/getButtonElement';
 import { getCurrentPage } from 'utils/getCurrentPage';
@@ -5,10 +6,11 @@ import { getCurrentWinnersPage } from 'utils/getCurrentWiinersPage';
 import { getDivElement } from 'utils/getDivElement';
 import { getInputElement } from 'utils/getInputElement';
 import { getSpanElement } from 'utils/getSpanElement';
+import { EngineStatus } from 'utils/types';
 import { updateButtonStates } from 'utils/updateButtonStates';
 import { updateGarage } from 'utils/updateGarage';
 import { updateWinners } from 'utils/updateWinners';
-import { createCar, deleteCar, getCar, updateCar } from './Api';
+import { createCar, deleteCar, getCar, startStopEngine, updateCar } from './Api';
 
 export const listenPageChange = () => {
   const garageBtn = getButtonElement(document, '#to-garage');
@@ -88,6 +90,18 @@ const listenRemoveCar = (track: Element): void => {
   removeBtn.addEventListener('click', async () => {
     await deleteCar(carId);
     await updateGarage(getCurrentPage());
+    await updateWinners(getCurrentWinnersPage());
+  });
+};
+
+const listenStartEngine = (track: Element) => {
+  const startCarBtn = getButtonElement(track, '#accelerate');
+  const carId = Number(track.id);
+  startCarBtn.addEventListener('click', async () => {
+    startCarBtn.disabled = true;
+    const driveProps = await startStopEngine(carId, EngineStatus.Started);
+    const raceDuration = driveProps.distance / driveProps.velocity;
+    animateCar(track, raceDuration);
   });
 };
 
@@ -101,6 +115,7 @@ export const setListenersToCars = () => {
   tracksCollection.forEach((track) => {
     listenSelectCar(track, inputName, inputColor, updateCarButton);
     listenRemoveCar(track);
+    listenStartEngine(track);
   });
 };
 
