@@ -15,6 +15,12 @@ export type Winner = {
   time: number;
 };
 
+export type RaceWinnerProps = {
+  carId: number;
+  carName: string | null;
+  raceDuration: number;
+};
+
 export type GetWinnersResponse = {
   winners: Array<Winner>;
   amount: string | null;

@@ -3,6 +3,8 @@ import {
   listenGenerateCars,
   listenPageChange,
   listenPagination,
+  listenRace,
+  listenReset,
   listenUpdateCar,
   setListenersToCars,
 } from 'components/Listeners';
@@ -20,6 +22,8 @@ const app = async () => {
   updateButtonStates();
   listenPagination();
   listenGenerateCars();
+  listenRace();
+  listenReset();
 };
 
 app();

@@ -7,6 +7,7 @@ import {
   SortByParam,
   SortOrder,
   DriveParams,
+  Winner,
 } from 'utils/types';
 
 export const getCars = async (page: number, limit = 7): Promise<GetCarsResponse> => {
@@ -59,8 +60,7 @@ export const driveCar = async (id: number, status: EngineStatus): Promise<{ succ
   const response = await fetch(`${ENGINE_ENDPOINT}?id=${id}&status=${status}`, {
     method: 'PATCH',
   });
-  if (!response.ok && response.status === 500) {
-    console.log(await response.text());
+  if (!response.ok) {
     return { success: false };
   }
   return response.json();
@@ -77,4 +77,35 @@ export const getWinners = async (
     winners: await response.json(),
     amount: response.headers.get('X-Total-Count'),
   };
+};
+
+export const getWinner = async (id: number): Promise<Response> => {
+  const response = await fetch(`${WINNERS_ENDPOINT}/${id}`);
+  return response;
+};
+
+export const createWinner = async (winner: Winner): Promise<Winner> => {
+  const response = await fetch(WINNERS_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(winner),
+  });
+  return response.json();
+};
+
+export const updateWinner = async (winner: Winner): Promise<Winner> => {
+  const response = await fetch(`${WINNERS_ENDPOINT}/${winner.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ wins: winner.wins, time: winner.time }),
+  });
+  return response.json();
+};
+
+export const deleteWinner = async (id: number): Promise<void> => {
+  await fetch(`${WINNERS_ENDPOINT}/${id}`, { method: 'DELETE' });
 };

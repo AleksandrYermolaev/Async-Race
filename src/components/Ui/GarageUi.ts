@@ -68,6 +68,7 @@ export const renderTracks = (cars: Array<Car>) => {
 export const renderGaragePage = (garage: GetCarsResponse, page = 1) => {
   return `
   <div class="wrapper__garage garage">
+    <div class="modal hide"></div>
     ${createControlsBlock()}
     <h1 class="header">Garage (<span id="cars-amount">${garage.amount}</span>)</h1>
     <h2 class="page-num">Page #<span id="page-num">${page}</span></h2>
