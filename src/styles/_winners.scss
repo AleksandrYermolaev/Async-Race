@@ -17,6 +17,25 @@
         text-align: center;
         padding: 5px 10px;
       }
+
+      #sort-wins,
+      #sort-time {
+        cursor: pointer;
+      }
+
+      .sort-desc {
+        &::after {
+          margin-left: 5px;
+          content: '↓';
+        }
+      }
+
+      .sort-asc {
+        &::after {
+          margin-left: 5px;
+          content: '↑';
+        }
+      }
     }
 
     tbody {

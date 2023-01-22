@@ -1,8 +1,8 @@
 import { getCars } from 'components/Api';
 import { setListenersToCars } from 'components/Listeners';
 import { renderTracks } from 'components/Ui/GarageUi';
-import { getDivElement } from './getDivElement';
-import { getSpanElement } from './getSpanElement';
+import { getDivElement } from './htmlGetters/getDivElement';
+import { getSpanElement } from './htmlGetters/getSpanElement';
 import { updateButtonStates } from './updateButtonStates';
 
 export const updateGarage = async (page = 1): Promise<void> => {

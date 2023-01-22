@@ -1,10 +1,16 @@
 import { getWinners } from 'components/Api';
 import { renderWinners } from 'components/Ui/WinnersUi';
-import { getSpanElement } from './getSpanElement';
+import { getSpanElement } from './htmlGetters/getSpanElement';
+import { SortByParam, SortOrder } from './types';
 import { updateButtonStates } from './updateButtonStates';
 
-export const updateWinners = async (page = 1): Promise<void> => {
-  const winnersProps = await getWinners(page);
+export const updateWinners = async (
+  page = 1,
+  limit = 10,
+  sortParam?: SortByParam,
+  order?: SortOrder
+): Promise<void> => {
+  const winnersProps = await getWinners(page, limit, sortParam, order);
   const winnersTableMarkup = await renderWinners(winnersProps.winners);
   const winnersRows = document.querySelectorAll('.table__row');
   winnersRows.forEach((row) => row.remove());

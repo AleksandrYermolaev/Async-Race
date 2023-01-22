@@ -1,16 +1,19 @@
 import { animateCar, animationId } from 'utils/animateCar';
+import { WINNERS_PAGE_LIMIT } from 'utils/constants';
 import { generateRandomCars } from 'utils/generateRandomCars';
-import { getButtonElement } from 'utils/getButtonElement';
+import { getButtonElement } from 'utils/htmlGetters/getButtonElement';
 import { getCurrentPage } from 'utils/getCurrentPage';
 import { getCurrentWinnersPage } from 'utils/getCurrentWiinersPage';
-import { getDivElement } from 'utils/getDivElement';
-import { getInputElement } from 'utils/getInputElement';
-import { getSpanElement } from 'utils/getSpanElement';
-import { getSvgElement } from 'utils/getSvgElement';
+import { getDivElement } from 'utils/htmlGetters/getDivElement';
+import { getInputElement } from 'utils/htmlGetters/getInputElement';
+import { getSpanElement } from 'utils/htmlGetters/getSpanElement';
+import { getSvgElement } from 'utils/htmlGetters/getSvgElement';
+import { getTdElement } from 'utils/htmlGetters/getTdElement';
 import { setCarToWinners } from 'utils/setCarToWinners';
+import { sortWinner } from 'utils/sortWinners';
 import { toggleErrorMessage } from 'utils/toggleErrorMessage';
 import { toggleWinnerMessage } from 'utils/toggleWinnerMessage';
-import { EngineStatus, RaceWinnerProps } from 'utils/types';
+import { EngineStatus, RaceWinnerProps, SortByParam } from 'utils/types';
 import { updateButtonStates } from 'utils/updateButtonStates';
 import { updateGarage } from 'utils/updateGarage';
 import { updateWinners } from 'utils/updateWinners';
@@ -228,4 +231,32 @@ export const listenReset = () => {
     toggleWinnerMessage();
     raceBtn.disabled = false;
   });
+};
+
+export const listenSorting = () => {
+  const sortByWinsBtn = getTdElement(document, '#sort-wins');
+  const sortByTimeBtn = getTdElement(document, '#sort-time');
+  sortByWinsBtn.addEventListener('click', () => {
+    sortByTimeBtn.className = '';
+    const order = sortWinner(sortByWinsBtn);
+    updateWinners(getCurrentWinnersPage(), WINNERS_PAGE_LIMIT, SortByParam.Wins, order);
+  });
+  sortByTimeBtn.addEventListener('click', () => {
+    sortByWinsBtn.className = '';
+    const order = sortWinner(sortByTimeBtn);
+    updateWinners(getCurrentWinnersPage(), WINNERS_PAGE_LIMIT, SortByParam.Time, order);
+  });
+};
+
+export const listener = () => {
+  listenPageChange();
+  listenCreateCar();
+  listenUpdateCar();
+  setListenersToCars();
+  updateButtonStates();
+  listenPagination();
+  listenGenerateCars();
+  listenRace();
+  listenReset();
+  listenSorting();
 };

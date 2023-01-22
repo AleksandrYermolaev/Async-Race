@@ -1,4 +1,4 @@
-import { getDivElement } from './getDivElement';
+import { getDivElement } from './htmlGetters/getDivElement';
 
 const showErrorMessage = (modal: HTMLDivElement): void => {
   modal.textContent = `Oh, no! All cars are broken, there are no winner!`;

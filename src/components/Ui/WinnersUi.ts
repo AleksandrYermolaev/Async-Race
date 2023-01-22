@@ -37,8 +37,8 @@ export const renderWinnersPage = async (winnersProps: GetWinnersResponse, page =
           <td>Number</td>
           <td>Car icon</td>
           <td>Car name</td>
-          <td>Wins</td>
-          <td>Best time (sec)</td>
+          <td id="sort-wins">Wins</td>
+          <td id="sort-time">Best time (sec)</td>
         </tr>
       </thead>
       <tbody id="table-body">

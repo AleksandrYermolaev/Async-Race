@@ -1,9 +1,9 @@
 import { getAllCarsAmount } from './getAllCarsAmount';
 import { getAllWinnersAmount } from './getAllWinnersAmount';
-import { getButtonElement } from './getButtonElement';
+import { getButtonElement } from './htmlGetters/getButtonElement';
 import { getCurrentPage } from './getCurrentPage';
 import { getCurrentWinnersPage } from './getCurrentWiinersPage';
-import { getDivElement } from './getDivElement';
+import { getDivElement } from './htmlGetters/getDivElement';
 
 const updateNextButtonState = () => {
   const nextPageBtn = getButtonElement(document, '#next-page');

@@ -1,5 +1,5 @@
 import { driveCar } from 'components/Api';
-import { getSvgElement } from './getSvgElement';
+import { getSvgElement } from './htmlGetters/getSvgElement';
 import { EngineStatus } from './types';
 
 const tryDriveCar = async (carId: number): Promise<boolean> => {

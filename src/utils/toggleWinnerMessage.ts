@@ -1,4 +1,4 @@
-import { getDivElement } from './getDivElement';
+import { getDivElement } from './htmlGetters/getDivElement';
 import { RaceWinnerProps } from './types';
 
 const showWinnerMessage = (winner: RaceWinnerProps, modal: HTMLDivElement): void => {
