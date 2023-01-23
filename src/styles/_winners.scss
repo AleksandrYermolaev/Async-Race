@@ -1,0 +1,65 @@
+.winners {
+  margin: 3% 0 5% 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffffff;
+
+  .table {
+    table-layout: fixed;
+    border: 1px solid white;
+    border-collapse: collapse;
+
+    &__head {
+      background-color: $table-head-color;
+
+      td {
+        text-align: center;
+        padding: 5px 10px;
+      }
+
+      #sort-wins,
+      #sort-time {
+        cursor: pointer;
+      }
+
+      .sort-desc {
+        &::after {
+          margin-left: 5px;
+          content: '↓';
+        }
+      }
+
+      .sort-asc {
+        &::after {
+          margin-left: 5px;
+          content: '↑';
+        }
+      }
+    }
+
+    tbody {
+      tbody {
+        width: 100%;
+      }
+    }
+
+    &__row {
+      font-size: 0.8em;
+
+      td {
+        padding: 5px;
+        text-align: center;
+      }
+    }
+
+    &__row:nth-child(even) {
+      background-color: $table-row-color;
+    }
+
+    &__car {
+      width: 50px;
+      height: 20px;
+    }
+  }
+}
